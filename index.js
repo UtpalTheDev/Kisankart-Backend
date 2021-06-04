@@ -22,7 +22,7 @@ const signup=require("./routes/signup.router.js");
 const user=require("./routes/user.router.js");
 
 //mongoose conn
-mongoose.connect('mongodb+srv://utpal:utpalpati@cluster0.pxyfi.mongodb.net/kisankart?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{console.log("mongoose connected")}).catch(eror=>{console.log("mongoose connection problem",error)})
+mongoose.connect(process.env.DB_Secret,{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{console.log("mongoose connected")}).catch(eror=>{console.log("mongoose connection problem",error)})
 
 
 
