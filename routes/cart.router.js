@@ -23,7 +23,7 @@ router.route('/')
   try{
      const {userId}=req;
      let {items}=req.body;
-     console.log("sks",items)
+      console.log("sks",items)
      let previtems=await cartmodel.findOne({userId}) ; 
      if(!previtems){
       await cartmodel.create({userId,items:[]});
@@ -31,8 +31,9 @@ router.route('/')
      }
   console.log("here");
   if(!previtems.items.find(dataitem=>dataitem.itemId===items.itemId)){
+    consle.log("mmmm",dataitem.itemId);
   let data={...previtems,items:[...previtems.items,items]};
-  console.log({data})
+  //console.log({data})
   data=extend(previtems,data);
   let savedproduct=await data.save();
   res.json({success:true,product:savedproduct})

@@ -28,7 +28,7 @@ router.route('/')
    }
   console.log("here");
   let {itemId}=req.body;
-  if(!previtems.items.find(dataitem=>dataitem.itemId===itemId)){
+  if(!previtems.items.find(dataitem=>dataitem===itemId)){
   let data={...previtems,items:[...previtems.items,itemId]};
   console.log({data})
   data=extend(previtems,data);
