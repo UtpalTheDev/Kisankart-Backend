@@ -27,8 +27,7 @@ mongoose.connect(process.env.DB_Secret,{useNewUrlParser: true, useUnifiedTopolog
 
 
 app.get("/", (req, res) => {
-  // throw Error("galat")
-  res.send("nahi he")
+  res.send("kishankart backend")
 })
 
 

@@ -31,9 +31,7 @@ router.route('/')
      }
   console.log("here");
   if(!previtems.items.find(dataitem=>dataitem.itemId===items.itemId)){
-    // consle.log("mmmm",dataitem.itemId);
   let data={...previtems,items:[...previtems.items,items]};
-  //console.log({data})
   data=extend(previtems,data);
   let savedproduct=await data.save();
   res.json({success:true,product:savedproduct})
@@ -90,6 +88,21 @@ router.route('/')
   }
 });
 
+router.route("/empty")
+.delete(async(req,res)=>{
+  try{
+  const {userId}=req;
+  let previtems=await cartmodel.findOne({userId}) ; 
+  previtems.items=[]
+  await previtems.save()
+
+  res.json({success:true})
+  }
+  catch(error){
+    console.log(err);
+        res.status(500).json({success:false,message:"unable to delete products",errormessage:error.message})
+  }
+})
 
 module.exports=router;
 
