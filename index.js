@@ -5,7 +5,7 @@ const {Schema} =mongoose;
 const cors = require('cors');
 const app = express();
 
-
+require("dotenv").config();
 
 app.use(bodyparse.json())
 const { errorHandler } = require("./middlewares/error-handler.middleware")
@@ -22,7 +22,7 @@ const signup=require("./routes/signup.router.js");
 const user=require("./routes/user.router.js");
 
 //mongoose conn
-mongoose.connect(process.env.DB_Secret,{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{console.log("mongoose connected")}).catch(eror=>{console.log("mongoose connection problem",error)})
+mongoose.connect(process.env.DB_Secret,{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{console.log("mongoose connected")}).catch(error=>{console.log("mongoose connection problem",error)})
 
 
 
